@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isValid(String s) {
+        Deque<Character> stk = new ArrayDeque<>();
+        for(char c : s.toCharArray())
+        {
+            if(c == '(' || c =='[' || c == '{')
+                stk.push(c);
+            else
+            {
+                if(stk.isEmpty())
+                    return false;
+                char p = stk.pop();
+                if(c == ')' && p != '(')
+                    return false;
+                else if(c == ']' && p != '[')
+                    return false;
+                if(c == '}' && p != '{')
+                    return false;
+            }
+        }
+        return stk.isEmpty();
+    }
+}
